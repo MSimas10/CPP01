@@ -1,0 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msimek <msimek@student.42prague.com>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/26 16:32:41 by msimek            #+#    #+#             */
+/*   Updated: 2026/03/26 18:12:29 by msimek           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
+
+#include <iostream>
+
+class Zombie
+{
+    private:
+    
+    std::string name;
+
+    public:
+    
+        Zombie(std::string name);
+        ~Zombie();
+
+        void announce(void);
+};
+
+#endif
