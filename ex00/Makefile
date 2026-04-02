@@ -6,11 +6,9 @@
 #    By: msimek <msimek@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/26 14:02:10 by msimek            #+#    #+#              #
-#    Updated: 2026/03/26 14:04:00 by msimek           ###   ########.fr        #
+#    Updated: 2026/04/02 23:12:46 by msimek           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-
 
 
 NAME = zombie
@@ -18,7 +16,7 @@ NAME = zombie
 CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = 
+SRCS = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
