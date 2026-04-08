@@ -14,16 +14,15 @@ class Zombie
 
     public:
     Zombie();
-     //constructor with parameters to inicialize object and set up his value
+     //constructor with parameters to inicialize object and set up his value, in our case for just one Zombie
     Zombie(std::string name);
     ~Zombie();
 
     void setName(std::string name);
     
     void announce(void);
-}
+};
 
-    Zombie *zombieHorde(int N, std::string name);
-
+Zombie* zombieHorde(int N, std::string name);
 
 #endif
