@@ -15,6 +15,15 @@ class Weapon
     Weapon(std::string);
     ~Weapon();
 
+    //getter
+    //funkce nam vrati pohled (const) na originalni text, ktery nesmime menit, funkci volam napr.mojeZbran.getType()
+    //atribut type je v private a pomoci getType se muzeme do toho atributu podivat 
+    const std::string& getType();
+
+    //setter
+    //this metod can change type of the weapon
+    void setType(std::string newType);
+
 };
 
 
