@@ -1,40 +1,67 @@
-#include <fstream>
 #include <iostream>
+#include <fstream>
 #include <string>
 
+// Funkce pro nahrazení - nyní používá logiku erase a insert
+static std::string replaceLine(std::string line, const std::string& s1, const std::string& s2)
+ {
+    size_t pos = 0;
 
-//std::ifstream: Pro čtení ze souboru (input file stream).
-
-//std::ofstream: Pro zápis do souboru (output file stream).
-
-/*std::string:
-
-find(): Najde pozici prvního výskytu podřetězce.
-
-substr(): Vytvoří nový řetězec z části původního řetězce.
-
-Operátor + nebo append(): Pro spojování řetězců dohromady.*/
-
-std::string myreplace( std:: string line, const std::string& from, const std::string& to)
-
-int main(int argc, char *argv[])
-{
-    if (argc != 4)
+    if (s1.empty()) 
     {
-        std::cout << "Error: ./replace <filename> <search> <replace>" << std::endl; 
-        return(1);
+        return line;
     }
 
-    //opening the file
-    std::ifstream inFile(argv[1]);
-    if (!inFile.is_open())
+    // in the cycles we are changing directly the "line", by deleting old string and adding the new string, last one is jump over the added part
+    while ((pos = line.find(s1, pos)) != std::string::npos) {
+        line.erase(pos, s1.length()); // ✂️ Odstraní starý podřetězec
+        line.insert(pos, s2);         // 📥 Vloží nový podřetězec
+        pos += s2.length();           // 🏃‍♂️ Přeskočí vloženou část
+    }
+    return line;
+}
+
+// Funkce pro koordinaci čtení a zápisu
+static void replace(char *argv[], std::ifstream &inFile, std::ofstream &outFile)
+{
+    std::string line;
+    std::string s1 = argv[2];
+    std::string s2 = argv[3];
+
+    while (std::getline(inFile, line)) 
     {
-        std::cout << " Error: Could not open the file"<< argv[1] << std::endl;
+        outFile << replaceLine(line, s1, s2) << std::endl;
+    }
+
+}
+
+int main(int argc, char *argv[]) {
+    if (argc != 4)
+    {
+        std::cerr << "Use: ./replace <filename> <search> <replace>" << std::endl;
         return (1);
     }
 
-    std::string filename = argv[1];
-    std::ofstream outFile((filename + ".replace").c_str());
+    std::ifstream inFile(argv[1]);
+    if (!inFile.is_open())
+    {
+        std::cerr << "Error: can't open file" << std::endl;
+        return (1);
+    }
 
+    std::string outFileName = std::string(argv[1]) + ".replace";
+    
+    std::ofstream outFile(outFileName.c_str());
+    if (!outFile.is_open()) 
+    {
+        std::cerr << "Error: Could not create output file" << std::endl;
+        inFile.close();
+        return (1);
+    }
 
+    replace(argv, inFile, outFile);
+
+    inFile.close();
+    outFile.close();
+    return (0);
 }
