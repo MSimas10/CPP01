@@ -1,8 +1,9 @@
-NAME = zombie
+NAME = Complain
+
 CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
+SRCS = main.cpp Harl.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
