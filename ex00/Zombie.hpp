@@ -18,6 +18,8 @@
 #include <cstdlib>
 #include <cstdlib>
 
+//std::string _name - keep the value of the name, existing long till as I dont delete it, it is on heap
+//the name in constructor Zombie(std::string name); is temporary variable, when constructor will end this temporary valuable will vanish too 
 class Zombie
 {
     private:

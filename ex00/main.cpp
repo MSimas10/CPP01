@@ -20,12 +20,12 @@ void randomChump( std::string name );
 
 int main()
 {
-    //testing on stack
+    //testing on stack, . is for direct access, when we can reach it directly
     std::cout << "Zombie class test" << std::endl;
     Zombie zombie_1("Zombie_1");
     zombie_1.announce();
 
-    //testing on heap
+    //testing on heap, -> using, only when is pointer 
     std::cout << "\nnewZombie" << std::endl;
     Zombie* zombie_2 = newZombie("Zombie_2");
     zombie_2->announce();
