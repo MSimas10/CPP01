@@ -12,7 +12,6 @@
 
 #include "Zombie.hpp"
 
-//allocation on HEAP by new, we have to call delete
 Zombie* newZombie(std::string name)
 {
     return new Zombie(name);

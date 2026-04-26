@@ -12,21 +12,19 @@
 
 #include "Zombie.hpp"
 
-//creates fnc, names it and I can use it outside of the fnc scope;on stack
+//prototypes for compiler, they are promised to the compiler
 Zombie* newZombie( std::string name );
-
-//creates fnc, names it and makes it announce itself; on stack
 void randomChump( std::string name );
 
 int main()
 {
-    //testing on stack, . is for direct access, when we can reach it directly
+    //testing on stack, dies with semicolon
     std::cout << "Zombie class test" << std::endl;
     Zombie zombie_1("Zombie_1");
     zombie_1.announce();
 
     //testing on heap, -> using, only when is pointer 
-    std::cout << "\nnewZombie" << std::endl;
+    std::cout << "newZombie" << std::endl;
     Zombie* zombie_2 = newZombie("Zombie_2");
     zombie_2->announce();
 

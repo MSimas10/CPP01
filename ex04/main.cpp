@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 
-// Funkce pro nahrazení - nyní používá logiku erase a insert
+//replace logic 
 static std::string replaceLine(std::string line, const std::string& s1, const std::string& s2)
  {
     size_t pos = 0;
@@ -12,19 +12,17 @@ static std::string replaceLine(std::string line, const std::string& s1, const st
         return line;
     }
 
-    // in the cycles we are changing directly the "line", by deleting old string and adding the new string, last one is jump over the added part
-    // odstrani stary podretezec, vlozi novy podretezec a preskoci vlozenou cast
-    // hleda v retezci vyskyt na s1 od indexu pos., pokud najde, vrati pozici (index) prvniho znaku
+    // The program finds a match, replaces it with new text, and jumps past it to safely continue searching.
     while ((pos = line.find(s1, pos)) != std::string::npos) 
     {
-        line.erase(pos, s1.length()); // ✂️ Odstraní starý podřetězec, presny pocet znaku pocinaje pozici pos
-        line.insert(pos, s2);         // 📥 Vloží nový podřetězec, vlozi retezec s2 na konkretni pozici pos. zbytek textu puvodniho textu se posune doprava
-        pos += s2.length();           // 🏃‍♂️ Přeskočí vloženou část, posuneme se za to vlozene slovo
+        line.erase(pos, s1.length()); // erase old
+        line.insert(pos, s2);         // put new one on the position pos
+        pos += s2.length();           // jump over the new one
     }
     return line;
 }
 
-// Funkce pro koordinaci čtení a zápisu
+// fnc for coordination reading and writing
 static void replace(char *argv[], std::ifstream &inFile, std::ofstream &outFile)
 {
     std::string line;
@@ -46,7 +44,6 @@ int main(int argc, char *argv[]) {
     }
 
     //purpose is to read from a file, open to pipe to read a file
-    //.is_open() - zdali se potrubi podarilo napojit na soubor?
     std::ifstream inFile(argv[1]);
     if (!inFile.is_open())
     {
@@ -54,6 +51,7 @@ int main(int argc, char *argv[]) {
         return (1);
     }
 
+    //new file.replace
     std::string outFileName = std::string(argv[1]) + ".replace";
     
     std::ofstream outFile(outFileName.c_str());

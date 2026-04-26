@@ -12,6 +12,7 @@
 
 #include "Zombie.hpp"
 
+//Constructor with inicializater list
 Zombie::Zombie(std::string name) : _name(name)
 {}
 Zombie::~Zombie()

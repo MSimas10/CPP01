@@ -5,6 +5,8 @@
 #include <string>
 #include "Weapon.hpp"
 
+//HumanA has always weapon, in constructor,
+// reference can not be NULL, no ane can take a weapon
 class HumanA 
 {
     private:
@@ -15,7 +17,6 @@ class HumanA
     HumanA (const std::string &name, Weapon &weapon);
     ~HumanA();
 
-    //a member function attack()
     void attack() const;
 
 };

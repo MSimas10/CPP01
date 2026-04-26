@@ -5,6 +5,7 @@
 #include <string>
 #include "Weapon.hpp"
 
+//unarmed,pointer, I can give weapon later by fnc setWeapon
 class HumanB
 {
     private:

@@ -3,7 +3,6 @@
 
 #include <string>
 #include <iostream>
-#include <sstream>
 
 //implemented zombie class
 class Zombie
@@ -13,8 +12,9 @@ class Zombie
     std::string _name;
 
     public:
+    //default constructor
     Zombie();
-     //constructor with parameters to inicialize object and set up his value, in our case for just one Zombie
+     //parametric constructor, only for one zombie
     Zombie(std::string name);
     ~Zombie();
 

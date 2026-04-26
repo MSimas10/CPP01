@@ -12,7 +12,6 @@
 
 #include "Zombie.hpp"
 
-//new place on stack for Zombie, called constructor
 void randomChump( std::string name)
 {
     Zombie random(name);

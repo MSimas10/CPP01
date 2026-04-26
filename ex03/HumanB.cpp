@@ -1,5 +1,5 @@
 #include "HumanB.hpp"
-
+//NUll is for memory safety, not random place
 HumanB::HumanB(const std::string &name) : _name(name), _weapon(NULL)
 {
 }

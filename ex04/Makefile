@@ -1,4 +1,4 @@
-NAME = Replace
+NAME = replace
 
 CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98

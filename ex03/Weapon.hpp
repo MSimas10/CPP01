@@ -8,7 +8,6 @@
 class Weapon
 {
     private:
-    //private atribute type,which is a string
     std::string _type;
 
     public:
